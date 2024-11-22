@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
             _playerGravity.y = -1;
 
             _animator.SetBool("IsJumping", false);
-            _hasJumped = false; 
+            _hasJumped = false;
         }
 
         _controller.Move(_playerGravity * Time.deltaTime);
