@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
     private float _horizontal;
     private float _vertical;
     [SerializeField] private float _movimentSpeed = 5;
-
-    //(Rotar personaje)
     private  float _turnSmoothVelocity;
     [SerializeField] private float _turnSmoothTime = 0.5f;
 
@@ -33,7 +31,6 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         _horizontal = Input.GetAxis("Horizontal");
@@ -58,9 +55,9 @@ public class PlayerController : MonoBehaviour
 
         if(direction != Vector3.zero)
         {
-             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _camera.eulerAngles.y; //rotacion del personaje
+             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _camera.eulerAngles.y; 
 
-             float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime); //rotacion del personaje
+             float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime); 
 
              transform.rotation = Quaternion.Euler(0, smoothAngle, 0); 
 
@@ -74,11 +71,11 @@ public class PlayerController : MonoBehaviour
     {
         _playerGravity.y = Mathf.Sqrt(_jumpHeight * -2 * _gravity);
 
-            /*if (!_hasJumped)
+            if (!_hasJumped)
             {
                 _animator.SetBool("IsJumping", true);
                 _hasJumped = true;
-            }*/
+            }
     }
 
     void Gravity()
